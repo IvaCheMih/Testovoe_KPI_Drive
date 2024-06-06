@@ -45,7 +45,8 @@ func (f *FactsService) Get(fact dto.GetFactRequest) (string, error) {
 	}
 
 	//добавляем авторизацию и тип контента
-	request.Header.Add("Authorization", "Bearer 48ab34464a5573519725deb5865cc74c")
+	token := "Bearer" + " " + f.config.Token
+	request.Header.Add("Authorization", token)
 	request.Header.Set("Content-Type", writer.FormDataContentType())
 
 	client := &http.Client{}
@@ -102,7 +103,9 @@ func (f *FactsService) SaveOne(fact models.Fact) error {
 	}
 
 	//добавляем авторизацию и тип контента
-	request.Header.Add("Authorization", "Bearer 48ab34464a5573519725deb5865cc74c")
+
+	token := "Bearer" + " " + f.config.Token
+	request.Header.Add("Authorization", token)
 	request.Header.Set("Content-Type", writer.FormDataContentType())
 
 	client := &http.Client{}
