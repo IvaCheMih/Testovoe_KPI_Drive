@@ -25,18 +25,27 @@ http://localhost:8080/CreateFacts/
 
 ## CreateFacts
 
-Согласно заданию принимает массив фактов:
+Согласно заданию принимает массив фактов в формате:
 
-period_start:2024-05-01
-period_end:2024-05-31
-period_key:month
-indicator_to_mo_id:227373
-indicator_to_mo_fact_id:0
-value:1
-fact_time:2024-05-31
-is_plan:0
-auth_user_id:40
-comment: buffer Last_name
+    period_start:2024-05-01 
+
+    period_end:2024-05-31
+
+    period_key:month
+
+    indicator_to_mo_id:227373
+
+    indicator_to_mo_fact_id:0
+
+    value:1
+
+    fact_time:2024-05-31
+
+    is_plan:0
+
+    auth_user_id:40
+
+    comment: buffer Last_name
 
 Превращает их в массив структур и пошутчно отправляет в очередь Rabbit. Параллельно приложение ждёт из rabbit из соответсвующей очереди сообщения. Принимает их и поштучно отправляет на внешнее API.
 Авторизация встроена в само приложение, но, при необходимости, её можно вынести отдельно и осуществлять проверку на этапе приёма массива фактов.
@@ -61,10 +70,13 @@ type Fact struct {
 
 Принимает боди вида:
 
-period_start:2024-05-01
-period_end:2023-05-31
-period_key:month
-indicator_to_mo_id:227373
+    period_start:2024-05-01
+
+    period_end:2023-05-31
+
+    period_key:month
+
+    indicator_to_mo_id:227373
 
 Сразу делает запрос к внешнему API. Формат поучаемой с внешнего API структуры не описан, поэтому ответ печатается в формате string.
 
