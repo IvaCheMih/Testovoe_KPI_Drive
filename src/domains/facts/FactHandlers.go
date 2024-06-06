@@ -16,7 +16,7 @@ func CreateFactHandlers(factsService *FactsService) FactHandlers {
 	}
 }
 
-// CreateFact godoc
+// CreateFacts godoc
 // @Summary create fact.
 // @Description create fact.
 // @Tags createFact
@@ -24,8 +24,8 @@ func CreateFactHandlers(factsService *FactsService) FactHandlers {
 // @Produce json
 // @Param session body dto.CreateFactRequest true "request"
 // @Success 200 {object} dto.CreateFactResponse
-// @Router /CreateFact/ [post]
-func (f *FactHandlers) CreateFact(c *fiber.Ctx) error {
+// @Router /CreateFacts/ [post]
+func (f *FactHandlers) CreateFacts(c *fiber.Ctx) error {
 
 	// получаем массив фактов:
 	facts, err := dto.CreateRequestFact(c)

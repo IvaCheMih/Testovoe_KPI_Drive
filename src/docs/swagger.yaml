@@ -22,13 +22,7 @@ definitions:
     type: object
   dto.GetFactResponse:
     properties:
-      indicator_to_mo_id:
-        type: string
-      period_end:
-        type: string
-      period_key:
-        type: string
-      period_start:
+      message:
         type: string
     type: object
   models.Fact:
@@ -68,7 +62,7 @@ info:
   title: Fiber Swagger Example API
   version: "2.0"
 paths:
-  /CreateFact/:
+  /CreateFacts/:
     post:
       consumes:
       - application/json

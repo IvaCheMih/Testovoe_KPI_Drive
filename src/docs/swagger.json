@@ -21,7 +21,7 @@
     "host": "localhost:8080",
     "basePath": "/",
     "paths": {
-        "/CreateFact/": {
+        "/CreateFacts/": {
             "post": {
                 "description": "create fact.",
                 "consumes": [
@@ -125,16 +125,7 @@
         "dto.GetFactResponse": {
             "type": "object",
             "properties": {
-                "indicator_to_mo_id": {
-                    "type": "string"
-                },
-                "period_end": {
-                    "type": "string"
-                },
-                "period_key": {
-                    "type": "string"
-                },
-                "period_start": {
+                "message": {
                     "type": "string"
                 }
             }

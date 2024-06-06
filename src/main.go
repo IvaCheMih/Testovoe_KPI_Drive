@@ -70,7 +70,7 @@ func main() {
 
 	// два основых хэндлера:
 
-	server.Post("/CreateFact", factsHandlers.CreateFact)
+	server.Post("/CreateFact", factsHandlers.CreateFacts)
 
 	server.Post("/GetFact", factsHandlers.GetFact)
 

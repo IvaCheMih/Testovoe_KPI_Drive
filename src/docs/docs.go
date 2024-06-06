@@ -24,7 +24,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/CreateFact/": {
+        "/CreateFacts/": {
             "post": {
                 "description": "create fact.",
                 "consumes": [
@@ -128,16 +128,7 @@ const docTemplate = `{
         "dto.GetFactResponse": {
             "type": "object",
             "properties": {
-                "indicator_to_mo_id": {
-                    "type": "string"
-                },
-                "period_end": {
-                    "type": "string"
-                },
-                "period_key": {
-                    "type": "string"
-                },
-                "period_start": {
+                "message": {
                     "type": "string"
                 }
             }
