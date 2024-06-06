@@ -1,0 +1,124 @@
+basePath: /
+definitions:
+  dto.CreateFactRequest:
+    properties:
+      facts:
+        items:
+          $ref: '#/definitions/models.Fact'
+        type: array
+    type: object
+  dto.CreateFactResponse:
+    type: object
+  dto.GetFactRequest:
+    properties:
+      indicator_to_mo_id:
+        type: string
+      period_end:
+        type: string
+      period_key:
+        type: string
+      period_start:
+        type: string
+    type: object
+  dto.GetFactResponse:
+    properties:
+      indicator_to_mo_id:
+        type: string
+      period_end:
+        type: string
+      period_key:
+        type: string
+      period_start:
+        type: string
+    type: object
+  models.Fact:
+    properties:
+      auth_user_id:
+        type: string
+      comment:
+        type: string
+      fact_time:
+        type: string
+      indicator_to_mo_fact_id:
+        type: string
+      indicator_to_mo_id:
+        type: string
+      is_plan:
+        type: string
+      period_end:
+        type: string
+      period_key:
+        type: string
+      period_start:
+        type: string
+      value:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a sample server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Fiber Swagger Example API
+  version: "2.0"
+paths:
+  /CreateFact/:
+    post:
+      consumes:
+      - application/json
+      description: create fact.
+      parameters:
+      - description: request
+        in: body
+        name: session
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateFactRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.CreateFactResponse'
+      summary: create fact.
+      tags:
+      - createFact
+  /GetFact/:
+    post:
+      consumes:
+      - application/json
+      description: get fact.
+      parameters:
+      - description: request
+        in: body
+        name: session
+        required: true
+        schema:
+          $ref: '#/definitions/dto.GetFactRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.GetFactResponse'
+      summary: get fact.
+      tags:
+      - getFact
+schemes:
+- http
+securityDefinitions:
+  JWT:
+    description: JWT security accessToken. Please add it in the format "Bearer {AccessToken}"
+      to authorize your requests.
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

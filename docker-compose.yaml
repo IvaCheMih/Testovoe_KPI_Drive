@@ -1,0 +1,34 @@
+version: "1.1"
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    healthcheck:
+      test: rabbitmq-diagnostics -q status && rabbitmq-diagnostics -q check_local_alarms
+      interval: 5s
+      timeout: 5s
+      retries: 3
+    container_name: 'rabbitmq'
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+      - infra
+
+  application:
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    networks:
+      - infra
+    env_file: .env
+
+networks:
+  infra:
+    driver: bridge
